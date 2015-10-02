@@ -1,4 +1,7 @@
-#Shows off Basic Ruby Stuff
+=begin
+Shows off Basic Ruby Stuff
+=end
+
 class TestCode
 	variable = "String"
 	
@@ -12,12 +15,19 @@ class TestCode
 		end
 		
 		var = "Hi"
+		puts var
 		#show more scope stuff
-		for i in range(3)
+		for i in 0..2
 			var = 2
+			lel = 9
 			puts var
 		end
 		puts var
+		if true
+			var = 3
+		end
+		puts var
+		puts lel
 	end
 	
 	def basicElements
@@ -34,6 +44,17 @@ class TestCode
 		print text, " Has Type: #{text.class} \n"
 		text = text.to_f
 		print text, " Has Type: #{text.class} \n"
+		
+		string = 'a'
+		string += 'b'; puts string
+		string = string*2
+		puts string
+		
+		my_hash = {:x => ["Yay", 5, 5.5], :y => nil}
+		print my_hash[:x],"\n"
+		
+		my_symbol = :whatisthis
+		puts my_symbol
 	end
 	
 	puts variable
@@ -62,10 +83,10 @@ end
 
 
 #Main Code
-tester = TestCode.new
-puts "Show Scope Things:"
-tester.showScope
-tester.basicElements
-testArray = [1,2,3,4,5,6,7,8,9,10]
-#puts testArray.binSearch(3)
-puts testArray.binSearch(20)
+ tester = TestCode.new
+ puts "Show Scope Things:"
+ tester.showScope
+ tester.basicElements
+ testArray = [1,2,3,4,5,6,7,8,9,10]
+ puts testArray.binSearch(3)
+ puts testArray.binSearch(20)
