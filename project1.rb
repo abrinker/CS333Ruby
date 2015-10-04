@@ -1,6 +1,12 @@
+
 =begin
 Shows off Basic Ruby Stuff
 =end
+
+begin 
+require './Die.rb'
+rescue LoadError 
+end
 
 class TestCode
 	variable = "String"
@@ -30,6 +36,14 @@ class TestCode
 		puts lel
 	end
 	
+	def builtinBinary
+		arry = [1,2,3,4,5,6]
+		num = arry.bsearch{|x| x==4}
+		puts num
+			
+	end
+		
+		
 	def basicElements
 	  variable = 4;
 		#Print and Puts
@@ -65,6 +79,7 @@ class TestCode
 	
 end
 
+
 class Array
 	#Assumes A sorted Array
 	def binSearch(item, first=0, last = nil)
@@ -89,6 +104,7 @@ end
 
 #Main Code
  tester = TestCode.new
+ Dice = Die.new
  puts "Show Scope Things:"
  tester.showScope
  tester.basicElements
@@ -96,3 +112,5 @@ end
  puts testArray.binSearch(3)
  puts testArray.binSearch(20)
  tester.AwesomeHaiku
+ tester.builtinBinary
+ Dice.roll
