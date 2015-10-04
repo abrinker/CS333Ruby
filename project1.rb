@@ -56,8 +56,13 @@ class TestCode
 		my_symbol = :whatisthis
 		puts my_symbol
 	end
-	
+
+	def AwesomeHaiku
+		if (a=0 > -2)
+			puts "Haiku" end end
+			
 	puts variable
+	
 end
 
 class Array
@@ -65,9 +70,9 @@ class Array
 	def binSearch(item, first=0, last = nil)
 		last = self.size unless last
 		choice = (first+last)/2
-		print "first: ", first, "\n"
-		print "choice: ", choice, "\n"
-		print "last: ", last, "\n\n"
+		# print "first: ", first, "\n"
+# 		print "choice: ", choice, "\n"
+# 		print "last: ", last, "\n\n"
 
 		if (first == last && item != self[choice])
 			return nil
@@ -90,3 +95,4 @@ end
  testArray = [1,2,3,4,5,6,7,8,9,10]
  puts testArray.binSearch(3)
  puts testArray.binSearch(20)
+ tester.AwesomeHaiku
