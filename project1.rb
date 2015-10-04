@@ -5,12 +5,16 @@ Shows off Basic Ruby Stuff
 
 begin 
 require './Die.rb'
-rescue LoadError 
+rescue LoadError
+	puts "LoadError: Die.rb was not found."
+	exit
 end
 
+#My first test class in Ruby
 class TestCode
 	variable = "String"
 	
+	#Method that shows how scoping and variables work.
 	def showScope
 		#Show that the scope of variables are only within the class
 		begin
@@ -36,14 +40,14 @@ class TestCode
 		puts lel
 	end
 	
+	#Quick method to show off built in binary search
 	def builtinBinary
 		arry = [1,2,3,4,5,6]
 		num = arry.bsearch{|x| x==4}
 		puts num
-			
 	end
 		
-		
+	#Shows off the basic types (float, string, etc).
 	def basicElements
 	  variable = 4;
 		#Print and Puts
@@ -51,7 +55,7 @@ class TestCode
 		puts ""
 		2.times {puts "Puts Hello World"}
 
-		#
+		#Shows off string manipulation and to.___ methods
 		text = "555"
 		print text, " Has Type: #{text.class} \n"
 		text = text.to_i
@@ -70,7 +74,8 @@ class TestCode
 		my_symbol = :whatisthis
 		puts my_symbol
 	end
-
+	
+	#its and awesome haiku
 	def AwesomeHaiku
 		if (a=0 > -2)
 			puts "Haiku" end end
@@ -79,7 +84,7 @@ class TestCode
 	
 end
 
-
+#Reference the built in array class and add a method to it
 class Array
 	#Assumes A sorted Array
 	def binSearch(item, first=0, last = nil)
@@ -108,9 +113,13 @@ end
  puts "Show Scope Things:"
  tester.showScope
  tester.basicElements
+ puts "Show Binary Search Capabilities:"
  testArray = [1,2,3,4,5,6,7,8,9,10]
  puts testArray.binSearch(3)
  puts testArray.binSearch(20)
+ puts "Let's run a Haiku:"
  tester.AwesomeHaiku
+ puts "Let's use that built in Binary method:"
  tester.builtinBinary
+ puts "Finally, let's roll a die from a class in another file:"
  Dice.roll
