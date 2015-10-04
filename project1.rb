@@ -30,6 +30,13 @@ class TestCode
 		puts lel
 	end
 	
+	def builtinBinary
+		arry = [1,2,3,4,5,6]
+		puts arry.bsearch{|x| x==4}
+			
+	end
+		
+		
 	def basicElements
 	  variable = 4;
 		#Print and Puts
@@ -96,3 +103,4 @@ end
  puts testArray.binSearch(3)
  puts testArray.binSearch(20)
  tester.AwesomeHaiku
+ tester.builtinBinary
