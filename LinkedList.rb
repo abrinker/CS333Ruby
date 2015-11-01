@@ -160,28 +160,89 @@ end
 
 #test function for integers
 def list_ints
+	puts "Testing With Ints"
 	list = LinkedList.new
 	list.toString()
+	
+	#testing push
+	puts "After Pushing 1"
 	list.push(1)
 	list.toString()
+	
+	puts "Popping..."
 	puts list.pop()
+	
+	puts "\nShould be 1,2,3"
 	list.append(2)
 	list.push(1)
 	list.append(3)
 	list.toString()
+	
+	puts "Testing removing everything"
 	list.remove(2)
 	list.remove(1)
 	list.remove(3)
+	
+	puts "Resetting the list"
 	list.push(4)
 	list.push(5)
 	list.push(6)
 	list.toString()
 	
 	#make the proc
+	puts "After squaring"
 	some_proc = Proc.new{|x| x*x}
 	list.map(some_proc)
+	list.toString()
+	
+	#testing clearing
+	puts "Testing Clear"
+	list.clear()
+	list.toString()
+end
+
+#test function for strings
+def list_strs
+	puts "Testing With Strings"
+	list = LinkedList.new
+	list.toString()
+	
+	#testing push
+	puts "After Pushing A"
+	list.push("A")
+	list.toString()
+	
+	puts "Popping..."
+	puts list.pop()
+	
+	puts "\nShould be A,B,C"
+	list.append("B")
+	list.push("A")
+	list.append("C")
+	list.toString()
+	
+	puts "Testing removing everything"
+	list.remove("B")
+	list.remove("A")
+	list.remove("C")
+	
+	puts "Resetting the list"
+	list.push("D")
+	list.push("E")
+	list.push("F")
+	list.toString()
+	
+	#make the proc
+	puts "After Adding 'ED'"
+	some_proc = Proc.new{|s| s+'ED'}
+	list.map(some_proc)
+	list.toString()
+	
+	#testing clearing
+	list.clear()
 	list.toString()
 end
 
 #Main Method	
 list_ints()
+list_strs()
