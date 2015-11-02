@@ -76,6 +76,27 @@ class LinkedList
 		return current.get_item()
 	end
 	
+	#removes the ith element of the list
+	def remove_index(i)
+		if (!@head || @size < i+1) then return false end
+		current = @head
+		count = 0
+		while (count < i) #got to the index
+			current = current.get_next()
+			count += 1
+		end
+		#special cases
+		if (current == @head) then @head = @head.get_next() end
+		if (current == @tail) then @tail = @tail.get_prev() end
+		
+		#update pointers
+		if (current.get_prev()) then current.get_prev.set_next(current.get_next()) end
+		if (current.get_next()) then current.get_next.set_prev(current.get_prev()) end
+		
+		@size -= 1
+		return current.get_item()
+	end
+	
 	#returns everything but the size...yeah...sure
 	def get_size
 		return @size
@@ -96,6 +117,18 @@ class LinkedList
 			current.alter(func)
 			current = current.get_next()
 		end
+	end
+	
+	#determines whether or not all of the elements are the same type
+	def is_compromised
+		if (!@head) then return end
+		type = @head.get_item().class
+		current = @head
+		while (current)
+			if (!(current.get_item().is_a?(type))) then return true end
+			current = current.get_next()
+		end
+		return false
 	end
 	
 	#prints out a lovely string of the list
@@ -243,6 +276,46 @@ def list_strs
 	list.toString()
 end
 
+#test function for the is_compromised() method
+def list_safety
+	puts "Testing Compromise Check"
+	list = LinkedList.new()
+	list.append(2)
+	list.push(1)
+	puts "Is the List compromised? Should be false:"
+	puts list.is_compromised()
+	list.push("String")
+	puts "After adding a string it should be true now:"
+	puts list.is_compromised()
+end
+
+#test function for the remove_index() method
+def list_remove_test
+	puts "Testing the Remove index method"
+	list = LinkedList.new()
+	count = 9
+	while (count >= 0)
+		list.push(count)
+		count -= 1
+	end
+	puts "After initialization:"
+	list.toString()
+	list.remove_index(9)
+	list.remove_index(0)
+	list.remove_index(3)
+	puts "After removing 10th,1st, and 4th elements (9, 0, 4 should be gone)"
+	list.toString()
+	count = 10
+	while (count > 0)
+		list.remove_index(0)
+		count -= 1
+	end
+	puts "After removing the 0th element a ton:"
+	list.toString
+end
+
 #Main Method	
 list_ints()
 list_strs()
+list_safety()
+list_remove_test()
