@@ -97,6 +97,40 @@ class LinkedList
 		return current.get_item()
 	end
 	
+	#Gets the ith element of the list and returns it
+	def get_index(i)
+		if (!@head || @size < i+1)then return false end
+		current = this.head
+		count = 0
+		while (count < i) #go to the index
+			current = current.get_next()
+			count+=1
+		end
+		return current.get_item()
+	end
+	
+	#Returns a clone of the current list
+	def clone()
+		temp = LinkedList.new()
+		current = @head
+		while (current)
+			temp.append(current.get_item())
+			current = current.get_next()
+		end
+		return temp;
+	end
+	
+	#Returns a shuffled version of the list
+	def shuffle()
+		if (!@head)then return false end
+		temp = LinkedList.new()
+		clone = self.clone()
+		while (clone.get_size() > 0)
+			temp.push(clone.remove_index(rand(clone.get_size())))
+		end
+		return temp;
+	end
+	
 	#returns everything but the size...yeah...sure
 	def get_size
 		return @size
@@ -314,8 +348,28 @@ def list_remove_test
 	list.toString
 end
 
+#Test function for the shuffle() method
+def list_shuffle_test
+	puts "Testing Shuffling Capabilities"
+	list = LinkedList.new();
+	count = 10
+	while (count >= 1)
+		list.push(count);
+		count-=1;
+	end
+	puts "After Initialization:"
+	list.toString();
+	list = list.shuffle();
+	puts "After Shuffling:"
+	list.toString();
+	list = list.shuffle();
+	puts "After Shuffling Again:"
+	list.toString();
+end
+
 #Main Method	
-list_ints()
-list_strs()
-list_safety()
-list_remove_test()
+#list_ints()
+#list_strs()
+#list_safety()
+#list_remove_test()
+list_shuffle_test()
